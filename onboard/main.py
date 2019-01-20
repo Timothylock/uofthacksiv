@@ -36,10 +36,22 @@ while True:
     curTime = timeit.default_timer()
     currLat = startLat + ((curTime - start)/(timeToReset * 1000)) * (endLat - startLat)
     currLng = startLng + ((curTime - start)/(timeToReset * 1000)) * (endLng - startLng)
-    if curTime >= start + 4 and curTime <= start + 6:
+    if curTime >= start + 12 and curTime <= start + 14:
         print(str(curTime) + " - sending image for processing FR1")
         image_slicer.slice('./data/1.jpg', 9)
-        uploadImages("1", currLat , currLng)
+        uploadImages("12", currLat , currLng)
+    if curTime >= start + 27 and curTime <= start + 29:
+        print(str(curTime) + " - sending image for processing FR1")
+        image_slicer.slice('./data/1.jpg', 9)
+        uploadImages("27", currLat , currLng)
+    if curTime >= start + 45 and curTime <= start + 47:
+        print(str(curTime) + " - sending image for processing FR1")
+        image_slicer.slice('./data/1.jpg', 9)
+        uploadImages("45", currLat , currLng)
+    if curTime >= start + 49 and curTime <= start + 51:
+        print(str(curTime) + " - sending image for processing FR1")
+        image_slicer.slice('./data/1.jpg', 9)
+        uploadImages("49", currLat , currLng)
 
 
     # Resets the clock once the video is done
