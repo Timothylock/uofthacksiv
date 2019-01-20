@@ -8,8 +8,8 @@ import math
 # Given the prefix of the filename, upload the images to the other server
 def uploadImages(pre, lat, long):
     try:
-        for x in range(1, 3):
-            for y in range(1, 3):
+        for x in range(1, 4):
+            for y in range(1, 4):
                 with open('./data/' + pre + '_0' + str(x) + '_0' + str(y) + '.png', 'rb') as f:
                     multipart_form_data = {
                         'img.jpg': ('img.jpg', f),
@@ -23,7 +23,7 @@ def uploadImages(pre, lat, long):
 
 # Get reference time
 start = timeit.default_timer()
-timeToReset = 20
+timeToReset = 60
 
 startLat = 42.848620
 endLat = 42.848683
@@ -38,19 +38,19 @@ while True:
     currLng = startLng + ((curTime - start)/(timeToReset * 1000)) * (endLng - startLng)
     if curTime >= start + 12 and curTime <= start + 14:
         print(str(curTime) + " - sending image for processing FR1")
-        image_slicer.slice('./data/1.jpg', 9)
+        image_slicer.slice('./data/12.jpg', 9)
         uploadImages("12", currLat , currLng)
     if curTime >= start + 27 and curTime <= start + 29:
-        print(str(curTime) + " - sending image for processing FR1")
-        image_slicer.slice('./data/1.jpg', 9)
+        print(str(curTime) + " - sending image for processing FR2")
+        image_slicer.slice('./data/27.jpg', 9)
         uploadImages("27", currLat , currLng)
     if curTime >= start + 45 and curTime <= start + 47:
-        print(str(curTime) + " - sending image for processing FR1")
-        image_slicer.slice('./data/1.jpg', 9)
+        print(str(curTime) + " - sending image for processing FR3")
+        image_slicer.slice('./data/45.jpg', 9)
         uploadImages("45", currLat , currLng)
     if curTime >= start + 49 and curTime <= start + 51:
-        print(str(curTime) + " - sending image for processing FR1")
-        image_slicer.slice('./data/1.jpg', 9)
+        print(str(curTime) + " - sending image for processing FR4")
+        image_slicer.slice('./data/49.jpg', 9)
         uploadImages("49", currLat , currLng)
 
 
