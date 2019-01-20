@@ -26,6 +26,8 @@ def uploadImages(pre, lat, long):
 start = timeit.default_timer()
 timeToReset = 75
 
+sleepTime = 2
+
 startLat = 42.848620
 endLat = 42.848683
 startLng = -106.326584
@@ -37,7 +39,7 @@ while True:
     curTime = timeit.default_timer()
     currLat = startLat + ((curTime - start)/(timeToReset * 1000)) * (endLat - startLat)
     currLng = startLng + ((curTime - start)/(timeToReset * 1000)) * (endLng - startLng)
-    
+
     if curTime >= start + 12 and curTime <= start + 14:
         print(str(curTime) + " - sending image for processing FR1")
         image_slicer.slice('./data/12.jpg', 9)
@@ -54,13 +56,15 @@ while True:
         print(str(curTime) + " - sending image for processing FR4")
         image_slicer.slice('./data/49.jpg', 9)
         uploadImages("49", currLat , currLng)
+        sleepTime = 0
 
 
     # Resets the clock once the video is done
     if curTime >= start + timeToReset:
         print(str(curTime) + " - RESETTING")
         start = timeit.default_timer()
+        sleepTime = 2
 
     print(str(curTime) + " -DRONE AT " + str(currLat) + ", " + str(currLng))
-    time.sleep(2)
+    time.sleep(sleepTime)
 
