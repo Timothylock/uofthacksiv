@@ -29,9 +29,9 @@ timeToReset = 75
 sleepTime = 2
 
 startLat = 42.848620
-endLat = 42.848683
+endLat = 43.848683
 startLng = -106.326584
-endLng = -106.297965
+endLng = -107.297965
 
 while True:
     # 42.848658, -106.326453
